@@ -9,7 +9,7 @@ RUN \
 # install packages
 RUN \
     apt-get update && \
-    apt-get install -y wget curl libcgi-session-perl libwww-perl libxml-libxml-perl make
+    apt-get install -y wget curl libcgi-session-perl libwww-perl libxml-libxml-perl make ffmpeg
 
 RUN \
     cpan Mojolicious
