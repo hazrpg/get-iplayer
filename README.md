@@ -1,8 +1,8 @@
-# uirel/get-iplayer
-
-[![](https://images.microbadger.com/badges/image/uirel/get-iplayer.svg)](https://microbadger.com/images/uirel/get-iplayer "Get your own image badge on microbadger.com")
+# hazrpg/get-iplayer
 
 [Get_iPlayer](https://github.com/get-iplayer/get_iplayer) A utility for downloading TV and radio programmes from BBC iPlayer, that is currently in active development.
+
+This repo uses the get_iplayer.cgi web frontend that is exposed to port 1935
 
 
 ## Usage
@@ -12,8 +12,10 @@ docker create \
   --name=get-iplayer \
   -v <path to data>:/config \
   -v <path to downoads>:/data \
-  -e PGID=<gid> -e PUID=<uid>  \
-  uirel/get-iplayer
+  -e PGID=<gid> \
+  -e PUID=<uid>  \
+  -p 1935:1935 \
+  hazrpg/get-iplayer
 ```
 
 ## Parameters
@@ -25,6 +27,7 @@ For example with a port -p external:internal - what this shows is the port mappi
 * `-v /config` Containes get-player config and database
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `-p 1935:1935` for mapping the container's port to the host
 
 ### User / Group Identifiers
 
@@ -43,10 +46,9 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Versions
 
-+ **03.11.17:** Inital Release.
-+ **07.12.17:** Published.
++ **2020-10-21:** Inital Release.
 
 ## Credits
 + **Linuxserver.io** for dockerfile form, base image, readme outline
 + **binhex** for container form, variable notes and original version
-+ **jon-hedgrows** for the get-iplayer ppa
++ **get-iplayer** for this amazing tool, and for the time and effort they spent
