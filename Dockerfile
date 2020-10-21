@@ -9,7 +9,10 @@ RUN \
 # install packages
 RUN \
     apt-get update && \
-    apt-get install -y wget libcgi-session-perl libwww-perl
+    apt-get install -y wget curl libcgi-session-perl libwww-perl libxml-libxml-perl make
+
+RUN \
+    cpan Mojolicious
 
 # install latest version
 RUN \
